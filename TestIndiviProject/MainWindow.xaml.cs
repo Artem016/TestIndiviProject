@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -22,6 +23,7 @@ namespace TestIndiviProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        static public MainWindow mainWindow;
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         public List<Car> cars = new List<Car>();
         public List<Car> newCars = new List<Car>();
@@ -30,6 +32,7 @@ namespace TestIndiviProject
 
         public MainWindow()
         {
+            mainWindow = this;
             InitializeComponent();
             Random random = new Random();
         }
@@ -41,32 +44,38 @@ namespace TestIndiviProject
             //textBl.VerticalAlignment = VerticalAlignment.Top;
             //textBl.Text = Convert.ToString(DateTime.Now);
             //mainStackPanel.Children.Add(textBl);
+            AddTextBlock addTextBlock = new AddTextBlock();
+            addTextBlock.Show();
+            addTextBlock.Owner = this;
 
-            //AddTextBlock addTextBlock = new AddTextBlock();
-            //addTextBlock.Show();
-            //addTextBlock.Owner = this;
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    cars.Add(new Car(i, "Вася"));
 
-            for (int i = 0; i < 10; i++)
-            {
-                cars.Add(new Car(i, "Вася"));
+            //}
 
-            }
+            //using (var file = new FileStream("text.json", FileMode.OpenOrCreate))
+            //{
+            //    binaryFormatter.Serialize(file, cars);
+            //}
 
-            using (var file = new FileStream("text.json", FileMode.OpenOrCreate))
-            {
-                binaryFormatter.Serialize(file, cars);
-            }
+            //using (var file = new FileStream("text.json", FileMode.OpenOrCreate))
+            //{
+            //    newCars = binaryFormatter.Deserialize(file) as List<Car>;       
+            //}
 
-            using (var file = new FileStream("text.json", FileMode.OpenOrCreate))
-            {
-                newCars = binaryFormatter.Deserialize(file) as List<Car>;
-            }
-
-            foreach (var car in newCars)
-            {
-                tbForList.Text += ($"{car.Name} --> {car.Speed} \n");
-            }
+            //foreach (var car in newCars)
+            //{
+            //    tbForList.Text += ($"{car.Name} --> {car.Speed} \n");
+            //}          
         }
+
+        public void AddCar(Car car)
+        {
+            TextBlock tbNewCar = new TextBlock();
+            tbNewCar.Text = $"{car.Name} --> {car.Speed}";
+            mainStackPanel.Children.Add(tbNewCar);
+        }  
 
     }
 }

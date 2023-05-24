@@ -8,9 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid x:Name="mainGrid">
         <StackPanel x:Name="mainStackPanel">
-            <TextBlock Height="400" x:Name="tbForList"></TextBlock>
+            <TextBlock Height="200" x:Name="tbForList"></TextBlock>
         </StackPanel>
         <Button Width="100" Height="100" x:Name = "AddTwxtBlock" Click="AddTwxtBlock_Click"></Button>
-        
     </Grid>
 </Window>

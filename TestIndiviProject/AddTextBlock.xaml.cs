@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TestIndiviProject
@@ -19,15 +20,17 @@ namespace TestIndiviProject
     /// </summary>
     public partial class AddTextBlock : Window
     {
-
         public AddTextBlock()
         {
             InitializeComponent();
         }
         
 
-        private void AddTwxtBlock_Click(object sender, RoutedEventArgs e)
+        private void AddTextBlock_Click(object sender, RoutedEventArgs e)
         {
+            Car newCar = new Car(int.Parse(speedTB.Text), nameTB.Text);
+            MainWindow.mainWindow.AddCar(newCar);
+            this.Close();
         }
     }
 }

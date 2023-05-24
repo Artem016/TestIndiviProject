@@ -8,9 +8,9 @@
         Title="AddTextBlock" Height="450" Width="800">
     <Grid>
         <StackPanel x:Name="stp">
-            <TextBox x:Name="speed"></TextBox>
-            <TextBox x:Name="name"></TextBox>
+            <TextBox x:Name="speedTB"></TextBox>
+            <TextBox x:Name="nameTB"></TextBox>
         </StackPanel>
-        <Button Width="100" Height="100" x:Name = "AddTwxtBlock" Click="AddTwxtBlock_Click"></Button>
+        <Button Width="100" Height="100" x:Name = "AddTwxtBlock" Click="AddTextBlock_Click"></Button>
     </Grid>
 </Window>
